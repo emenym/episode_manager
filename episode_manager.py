@@ -56,6 +56,8 @@ def main():
     if args.shift:
         print('Doing Season Shift...')
         shift_season(ep_dict, dir_path)
+        print("Season shift complete.")
+        exit(0)
 
     if is_target_dir(args.target):
         rename_files(ep_dict, dir_path, show_name, season_break)
