@@ -70,7 +70,7 @@ def shift_season(ep_dict, dir_path):
     shift_list = sorted(ep_dict.items())
     for ep in shift_list:
         shifted_ep_num = shift_list.index(ep)+1
-        shifted_ep = ep[1].replace(str(ep[0]), str(shifted_ep_num), 1)
+        shifted_ep = ep[1].replace(str(ep[0]), str('{:02d}'.format(shifted_ep_num)), 1)
         old_name = ep_dict[ep[0]]
         new_name = shifted_ep
         rename_map.append((os.path.join(dir_path, old_name), os.path.join(dir_path, new_name)))
