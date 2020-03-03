@@ -136,7 +136,9 @@ def rename_files(ep_dict, dir_path, show_name, season_break):
 def do_rename(file_map):
     if dry_run_flag:
         print("\n!! Doing dry-run. No files will be changed !!\n")
-    for old, new in sorted(file_map, key=lambda ep: ep[1]):
+
+    # for old, new in sorted(file_map, key=lambda ep: ep[1]),:
+    for old, new in file_map:
         print("{} => {}".format(old, new))
         if not dry_run_flag:
             os.rename(old, new)
@@ -215,6 +217,16 @@ def is_target_dir(target):
         print('target not valid')
         exit(2)
 
+def atoi(text):
+    return int(text) if text.isdigit() else text
+
+def natural_keys(text):
+    '''
+    alist.sort(key=natural_keys) sorts in human order
+    http://nedbatchelder.com/blog/200712/human_sorting.html
+    (See Toothy's implementation in the comments)
+    '''
+    return [ atoi(c) for c in re.split(r'(\d+)', text) ]
 
 if __name__ == '__main__':
     main()
